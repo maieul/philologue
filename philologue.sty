@@ -1,3 +1,6 @@
+% Outils divers à charger
+\RequirePackage{xargs}
+\RequirePackage{ifthen}
 % Commande pour afficher les siècles
 \DeclareRobustCommand{\cRM}[1]{\MakeUppercase{\expandafter\romannumeral #1}}	% Capital
 \DeclareRobustCommand{\cRm}[1]{\textsc{\romannumeral #1}}	% Petit majuscule
@@ -6,7 +9,7 @@
 \DeclareRobustCommand{\siecles}[2]{\cRm{#1}-\cRm{#2}\textsuperscript{e}~siècles}
 % Bibleref
 
-\usepackage{bibleref-french}
+\RequirePackage{bibleref-french}
 \biblerefstyle{TOB}
 
 % csquotes
@@ -15,11 +18,11 @@
 
 % Pour les références bibliques 
 
-\DeclareRobustCommand{\bible}[3]{%
-	%#1 : livre, #2 : passage, #3 : texte
-	\emph{#3}\footnote{\protect\bibleverse{#1}(#2)}%
+\newcommandx*{\bible}[4][1]{%
+	%#1 : version , #2 : livre, #3 : passage, #4 : texte
+	\emph{#4}\footnote{\protect\bibleverse{#2}(#3)\ifthenelse{\equal{#1}{}}{(#1)}}%
 }
-\DeclareRobustCommand{\bibleall}[2]{%
-	%#1 : livre, #2 : passage
-	\footnote{\emph{Cf}.\protect\bibleverse{#1}(#2)}
+\newcommandx*{\bibleall}[3]{%
+	%#1 : version (par ex. LXX)#2 : livre, #3 : passage
+	\footnote{\emph{Cf}.\protect\bibleverse{#2}(#3)\ifthenelse{\equal{#1}{}}{(#1)}}
 	}
