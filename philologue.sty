@@ -20,9 +20,9 @@
 
 \newcommandx*{\bible}[4][1,usedefault]{%
 	%#1 : version , #2 : livre, #3 : passage, #4 : texte
-	\emph{#4}\footnote{\protect\bibleverse{#2}(#3)\ifthenelse{\equal{#1}{}}{(#1)}}%
+	\emph{#4}\footnote{\protect\bibleverse{#2}(#3)\ifthenelse{\equal{#1}{}}{ (#1)}}%
 }
 \newcommandx*{\bibleall}[3,usedefault]{%
 	%#1 : version (par ex. LXX)#2 : livre, #3 : passage
-	\footnote{\emph{Cf}.\protect\bibleverse{#2}(#3)\ifthenelse{\equal{#1}{}}{(#1)}}
+	\footnote{\emph{Cf}.\protect\bibleverse{#2}(#3)\ifthenelse{\equal{#1}{}}{ (#1)}}
 	}
