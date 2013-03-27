@@ -11,3 +11,15 @@
 
 % csquotes
 \usepackage{csquotes}
+
+
+% Pour les références bibliques 
+
+\DeclareRobustCommand{\bible}[3]{%
+	%#1 : livre, #2 : passage, #3 : texte
+	\emph{#3}\footnote{\protect\bibleverse{#1}(#2)}%
+}
+\DeclareRobustCommand{\bibleall}[2]{%
+	%#1 : livre, #2 : passage
+	\footnote{\emph{Cf}.\protect\bibleverse{#1}(#2)}
+	}
