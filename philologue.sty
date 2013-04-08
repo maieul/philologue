@@ -19,9 +19,12 @@
 % Pour les références bibliques 
 
 \newcommand*{\biblefr}[1]{\emph{#1}} % pour un fragment de bible seulement
-\newcommandx*{\bible}[4][1,usedefault]{%
+\newcommandx*{\bible}[7][1,5,6,7,usedefault]{%
 	%#1 : version , #2 : livre, #3 : passage, #4 : texte
-	\emph{#4}\footnote{\protect\bibleverse{#2}(#3)\ifthenelse{\equal{#1}{}}{ (#1)}.}%
+	%#5 : version 2, #6 : livre, #7 :   passage
+	\emph{#4}\footnote{\protect\bibleverse{#2}(#3)\ifthenelse{\equal{#1}{}}{ (#1)}%
+		\ifthenelse{\equal{#6}{}}{}{ ; \protect\bibleverse{#6}(#7)\ifthenelse{\equal{#5}{}}{ (#5)}}%	
+	.}%
 }
 \newcommandx*{\bibleall}[9][1,4,5,6,7,8,9,usedefault]{%
 	%#1 : version (par ex. LXX), #2 : livre, #3 : passage
