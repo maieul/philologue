@@ -1,5 +1,6 @@
 % Outils divers à charger
-\RequirePackage{xargs}
+\RequirePackage{etoolbox}
+\RequirePackage{xstring}
 \RequirePackage{ifthen}
 % Commande pour afficher les siècles
 \DeclareRobustCommand{\cRM}[1]{\MakeUppercase{\expandafter\romannumeral #1}}	% Capital
@@ -18,20 +19,35 @@
 
 % Pour les références bibliques 
 
-\newcommand*{\biblefr}[1]{\emph{#1}} % pour un fragment de bible seulement
-\newcommandx*{\bible}[7][1,5,6,7,usedefault]{%
-	%#1 : version , #2 : livre, #3 : passage, #4 : texte
-	%#5 : version 2, #6 : livre, #7 :   passage
-	\emph{#4}\footnote{\protect\bibleverse{#2}(#3)\ifthenelse{\equal{#1}{}}{ (#1)}%
-		\ifthenelse{\equal{#6}{}}{}{ ; \protect\bibleverse{#6}(#7)\ifthenelse{\equal{#5}{}}{ (#5)}}%	
-	.}%
+\newcommand{\bibleref}[1]{
+	%Commande pour afficher un passage biblique, c'est elle qui est appellée par tt les autres
+	\def\passage##1|##2|##3|{\bibleverse{##1}(##2)\ifstrempty{##3}{}{ (##3)}}% L'affichage de chaque passage : 1) livre 2) passage 3) version
+	% On commence par faire une liste des passages
+	\def\passages{}% Liste des passages
+	\numdef\nbpassages{0}% Nbr total de passages
+	\DeclareListParser*{\trouvepassages}{+}% Le + est un séparateur
+	\trouvepassages{\numdef\nbpassages{\nbpassages+1}\listadd\passages}{#1}% On remplit la liste des passage
+	%
+	% On la parcourt ensuite
+	\numdef\cptpassage{0}% Le nombre de passage courant
+	\renewcommand{\do}[1]{% Ce qu'on effectue à chaque boucle
+		\numdef\cptpassage{\cptpassage+1}% Incrémenter le compteur du passage courant
+		\IfSubStr[2]{##1}{|}% Tester si on a 2 ou 3 élèments dans le passage
+			{\passage##1|} % Si 3 élèments, donc 2 |
+			{\passage##1||}% Si 2 élèments, donc 1 |
+		\ifnumequal{\nbpassages}{\cptpassage}{.}{ ; }% y a t'il encore des passages ensuite?
+	}%
+	\dolistloop{\passages}% Boucler sur tt les passages
+	%
 }
-\newcommandx*{\bibleall}[9][1,4,5,6,7,8,9,usedefault]{%
-	%#1 : version (par ex. LXX), #2 : livre, #3 : passage
-	%#4 : version (par ex. LXX), #5 : livre, #6 : passage
-	%#7 : version (par ex. LXX), #8 : livre, #9 : passage
-	\footnote{\emph{Cf}. \protect\bibleverse{#2}(#3)\ifthenelse{\equal{#1}{}}{ (#1)}%
-		\ifthenelse{\equal{#5}{}}{}{ ; \protect\bibleverse{#5}(#6)\ifthenelse{\equal{#4}{}}{ (#4)}}%
-		\ifthenelse{\equal{#8}{}}{}{ ; \protect\bibleverse{#8}(#9)\ifthenelse{\equal{#7}{}}{ (#7)}}%
-	.}
+
+\newcommand*{\biblefr}[1]{\emph{#1}} % pour un fragment de bible seulement
+\newcommand*{\bible}[2]{%
+	%#1 : passage
+	%#2 : texte
+	\emph{#2}\footnote{\bibleref{#1}}%
+}
+\newcommand*{\bibleall}[1]{%
+	%#1 : passage
+	\footnote{\emph{Cf}. \bibleref{#1}}%
 	}
