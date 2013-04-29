@@ -1,9 +1,9 @@
 % Outils divers à charger
-\usepackage{fontspec,xunicode,polyglossia}
+\RequirePackage{fontspec,xunicode,polyglossia}
 \XeTeXinputnormalization 1
 \RequirePackage{etoolbox}
 \RequirePackage{xstring}
-\usepackage{hyperref}
+\RequirePackage{hyperref}
 % Commande pour afficher les siècles
 \DeclareRobustCommand{\cRM}[1]{\MakeUppercase{\expandafter\romannumeral #1}}	% Capital
 \DeclareRobustCommand{\cRm}[1]{\textsc{\romannumeral #1}}	% Petit majuscule
