@@ -50,12 +50,14 @@
 
 \newcommand*{\biblefr}[1]{\emph{#1}} % pour un fragment de bible seulement
 \newcommand*{\bible}[2]{%
+	\ifnumbering\let\footnote\footnoteA\fi%
 	%#1 : passage
 	%#2 : texte
 	\emph{#2}\footnote{\bibleref{#1}}%
 }
 \newcommand*{\bibleall}[1]{%
 	%#1 : passage
+	\ifnumbering\let\footnote\footnoteA\fi%
 	\footnote{\emph{Cf}. \bibleref{#1}}%
 	}
 
