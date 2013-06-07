@@ -4,6 +4,9 @@
 \RequirePackage{etoolbox}
 \RequirePackage{xstring}
 \RequirePackage{hyperref}
+\RequirePackage{xargs}
+\RequirePackage{imakeidx}
+\RequirePackage{eledmac,eledpar}
 % Commande pour afficher les siècles
 \DeclareRobustCommand{\cRM}[1]{\MakeUppercase{\expandafter\romannumeral #1}}	% Capital
 \DeclareRobustCommand{\cRm}[1]{\textsc{\romannumeral #1}}	% Petit majuscule
@@ -53,3 +56,7 @@
 	%#1 : passage
 	\footnote{\emph{Cf}. \bibleref{#1}}%
 	}
+
+% pour les notes de traductions
+\newcommand{\ctrad}[2]{\edtext{#1}{\Bfootnote{#2}}}
+\newcommand{\lit}[1]{\emph{lit.} : #1}
