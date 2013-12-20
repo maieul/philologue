@@ -111,6 +111,9 @@
 
 % Diverse commandes
 \newcommand{\cf}{cf.~}
+\newcommandx{\sic}[1][1,usedefault]{%
+	\ifstrempty{#1}{ (\emph{sic})}{#1\sic}%
+}
 % Manuscrit
 
 \newcommand{\ms}[1]{\emph{#1}}
