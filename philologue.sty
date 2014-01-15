@@ -131,7 +131,34 @@
 	\end{stemma}
 }
 \newcommand{\refstemma}[1]{stemma~\ref{stemma:#1}\xspace}
+% Commande pour afficher des textes en //
 
+\newenvironment{col}{%
+\setlength{\columnrulewidth}{0.5pt}
+\vspace{0.5ex}
+\small
+\begin{pairs}
+	\emergencystretch=0.05\hsize
+	%\singlespacing
+	\newenvironment{qenglish}{\begin{Leftside}\begin{english}\beginnumbering\autopar}
+{
+
+\endnumbering\end{english}\end{Leftside}}
+
+	\newenvironment{qgreek}{\begin{Leftside}\begin{hyphenrules}{greek}\beginnumbering\autopar}
+{
+
+\endnumbering\end{hyphenrules}\end{Leftside}}
+	
+	\newenvironment{trad}{\begin{Rightside}\beginnumbering\autopar}
+{
+
+\endnumbering\end{Rightside}}
+}
+{
+\Columns
+\end{pairs}
+}
 % Charger eledmac en dernier, car il perturbe makeindex
 
 \RequirePackage{eledmac,eledpar}
