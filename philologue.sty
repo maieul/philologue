@@ -106,9 +106,9 @@
 		\fi%
 	\fi%
 	\ifstrempty{#1}{%
-		\ifstrempty{#2}{\index[#4]{#3}}{\index[#4]{#3|see{#2}\index[#4]{#2}}}%cas de renvoi
+		\ifstrempty{#2}{\index[#4]{#3}}{\index[#4]{#3|see{#2}}\index[#4]{#2}}%cas de renvoi
 	}{%
-		\ifstrempty{#2}{\index[#4]{#3, #1}}{\index[#4]{#3, #1|see{#2}\index[#4]{#2}}}%
+		\ifstrempty{#2}{\index[#4]{#3, #1}}{\index[#4]{#3, #1|see{#2}}\index[#4]{#2}}%
 	}%
 }
 
