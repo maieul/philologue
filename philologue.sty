@@ -133,6 +133,21 @@
 	\end{stemma}
 }
 \newcommand{\refstemma}[1]{stemma~\ref{stemma:#1}\xspace}
+% tableau
+\setlength{\doublerulesep}{0pt}
+\newcommand{\titrecolonne}[1]{\hfill \emph{#1} \hfill}
+% Charger eledmac en dernier, car il perturbe makeindex
+
+\RequirePackage{eledmac,eledpar}
+\shiftedpstartstrue
+\newcommand{\titulus}[1]{\textbf{\emph{#1}}}
+\newcommand{\saut}{}
+\footparagraphX{A}
+\renewcommand*{\Rlineflag}{}
+\setstanzaindents{2,1}
+\setcounter{stanzaindentsrepetition}{1}
+\renewcommand{\hangingsymbol}{[\,}
+
 % Commande pour afficher des textes en //
 
 \newenvironment{col}{%
@@ -168,17 +183,4 @@
 \Columns
 \end{pairs}
 }
-% tableau
-\setlength{\doublerulesep}{0pt}
-\newcommand{\titrecolonne}[1]{\hfill \emph{#1} \hfill}
-% Charger eledmac en dernier, car il perturbe makeindex
 
-\RequirePackage{eledmac,eledpar}
-\shiftedpstartstrue
-\newcommand{\titulus}[1]{\textbf{\emph{#1}}}
-\newcommand{\saut}{}
-\footparagraphX{A}
-\renewcommand*{\Rlineflag}{}
-\setstanzaindents{2,1}
-\setcounter{stanzaindentsrepetition}{1}
-\renewcommand{\hangingsymbol}{[\,}
