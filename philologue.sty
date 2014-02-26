@@ -110,7 +110,10 @@
 		\ifstrempty{#2}{\index[#4]{#3, #1}}{\index[#4]{#3, #1|see{#2}}\index[#4]{#2}}%
 	}%
 }
+% commander des formes dans le corps d'un texte
 
+\newcommand{\latinforme}[1]{\enquote{\textlatin{#1}}}
+\newcommand{\greekforme}[1]{\enquote{\textgreek{#1}}}
 % Diverse commandes
 \newcommand{\cf}{cf.~}
 \newcommandx{\sic}[1][1,usedefault]{%
@@ -186,4 +189,5 @@
 \Columns
 \end{pairs}
 }
+
 
