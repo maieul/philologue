@@ -1,5 +1,6 @@
 \setmainfont[Ligatures=TeX]{Linux Libertine O}
 \RequirePackage{setspace}
+\RequirePackage{etoolbox}
 \onehalfspacing
 
 % Réglage pour les listes, avec le package enumitem
@@ -11,3 +12,6 @@
 
 % geometry
 \usepackage[a4paper]{geometry}
+
+% quotation
+\apptocmd{\quotation}{\small\singlespacing\vspace{-\baselineskip}}{}{}
