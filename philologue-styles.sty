@@ -14,4 +14,12 @@
 \usepackage[a4paper]{geometry}
 
 % quotation
-\apptocmd{\quotation}{\small\singlespacing\vspace{-\baselineskip}}{}{}
+\renewenvironment{quotation}
+               {\small\singlespacing\vspace{-\baselineskip}%
+               \list{}{\advance\leftmargin 1.5em%
+               	       \listparindent 1.5em%
+                        \itemindent    \listparindent
+                        \rightmargin   \leftmargin
+                        \parsep        \z@ \@plus\p@}%
+                \item\relax}
+               {\endlist}
