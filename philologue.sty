@@ -143,7 +143,7 @@
 \newcommand{\refstemma}[1]{stemma~\ref{stemma:#1}\xspace}
 % tableau
 \setlength{\doublerulesep}{0pt}
-\newcommand{\titrecolonne}[1]{\hfill \emph{#1} \hfill}
+\newcommand{\titrecolonne}[1]{\hfill \emph{#1} \hfill~}
 % Charger eledmac en dernier, car il perturbe makeindex
 
 \RequirePackage{eledmac,eledpar}
@@ -198,3 +198,10 @@
 % Pour comparer des textes
 \newcommand{\para}[1]{\textbf{#1}}
 \newcommand{\diff}[1]{\textbf{#1}}
+\newenvironment{comparaison}[2]{%
+	\begin{longtable}{p{0.5\textwidth}|p{0.5\textwidth}}
+\titrecolonne{#1} & \titrecolonne{#2} \\%
+	\endhead%
+}{%
+	\end{longtable}%
+}
