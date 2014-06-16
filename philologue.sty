@@ -1,6 +1,20 @@
-% Outils divers à charger
+% Options
+
+\RequirePackage{kvoptions}
+\DeclareBoolOption[false]{english}
+\ProcessKeyvalOptions*
+% Outils divers à charger, dépendant de la langue
 \RequirePackage{fontspec,xunicode,polyglossia}
-\setmainlanguage{french}
+\ifphilologue@english
+	\setmainlanguage{english}
+	\RequirePackage{bibleref}
+	\biblerefstyle{jerusalem}
+\else
+	\setmainlanguage{french}
+	\RequirePackage{bibleref-french}
+	\biblerefstyle{defaultshorter}
+\fi
+% Outils divers à charger, indépendant de la langue
 \XeTeXinputnormalization 1
 \RequirePackage{etoolbox}
 \RequirePackage{xstring}
@@ -21,8 +35,7 @@
 \DeclareRobustCommand{\siecles}[2]{\cRm{#1}-\cRm{#2}\textsuperscript{e}~siècles}
 % Bibleref
 
-\RequirePackage{bibleref-french}
-\biblerefstyle{defaultshorter}
+
 
 % csquotes
 \usepackage{csquotes}
