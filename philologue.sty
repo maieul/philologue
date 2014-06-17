@@ -2,6 +2,7 @@
 
 \RequirePackage{kvoptions}
 \DeclareBoolOption[false]{english}
+\DeclareBoolOption[false]{noindex}
 \ProcessKeyvalOptions*
 % Outils divers à charger, dépendant de la langue
 \RequirePackage{fontspec,xunicode,polyglossia}
@@ -88,28 +89,35 @@
 % pour les index
 \newif\ifvoirindex
 
+% Déclaration des fichiers d'index
+\ifphilologue@noindex\else
+	\makeindex[name=np,title={Noms de personnes}]
+	\makeindex[name=nl,title={Noms de lieux}]
+	\makeindex[name=npe,title={Noms de peuples}]
+\fi
 %% nom de personnes
-\makeindex[name=np,title={Noms de personnes}]
+
 \newcommandx{\np}[3][1,2,usedefault]{%
 	#3\indexn[#1][#2]{#3}{np}%
 }
 \newcommandx{\indexnp}[3][1,2,usedefault]{\indexn[#1][#2]{#3}{np}}
 
 % nom de lieu
-\makeindex[name=nl,title={Noms de lieux}]
+
 \newcommandx{\nl}[3][1,2,usedefault]{%
 	#3\indexn[#1][#2]{#3}{nl}%
 }
 \newcommandx{\indexnl}[3][1,2,usedefault]{\indexn[#1][#2]{#3}{nl}}
 
 % nom de peuple
-\makeindex[name=npe,title={Noms de peuples}]
+
 \newcommandx{\npe}[3][1,2,usedefault]{%
 	#3\indexn[#1][#2]{#3}{npe}%
 }
 \newcommandx{\indexnpe}[3][1,2,usedefault]{\indexn[#1][#2]{#3}{npe}}
 %%% commande générale pour indexer noms propre
 \newcommandx{\indexn}[4][1,2,usedefault]{%
+    \ifphilologue@noindex\else%
 	\ifvoirindex%
 		\ifnumbering%% si dans section numeroté
 			\ledsidenote{#4:#1,#2,#3}%
@@ -122,6 +130,7 @@
 	}{%
 		\ifstrempty{#2}{\index[#4]{#3, #1}}{\index[#4]{#3, #1|see{#2}}\index[#4]{#2}}%
 	}%
+	\fi%
 }
 % commander des formes dans le corps d'un texte
 
