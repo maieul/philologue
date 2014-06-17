@@ -3,6 +3,7 @@
 \RequirePackage{kvoptions}
 \DeclareBoolOption[false]{english}
 \DeclareBoolOption[false]{noindex}
+\DeclareBoolOption[false]{word}
 \ProcessKeyvalOptions*
 % Outils divers à charger, dépendant de la langue
 \RequirePackage{fontspec,xunicode,polyglossia}
@@ -221,6 +222,7 @@
 \newcommand{\para}[1]{\textbf{#1}}
 \newcommand{\diff}[1]{\textbf{#1}}
 \newenvironment{comparaison}[2]{%
+	\small
 	\begin{longtable}{p{0.5\textwidth}|p{0.5\textwidth}}
 \titrecolonne{#1} & \titrecolonne{#2} \\%
 	\endhead%
