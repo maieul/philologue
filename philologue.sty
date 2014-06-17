@@ -3,6 +3,7 @@
 \RequirePackage{kvoptions}
 \DeclareBoolOption[false]{english}
 \DeclareBoolOption[false]{noindex}
+\DeclareBoolOption[false]{word}
 \ProcessKeyvalOptions*
 % Outils divers à charger, dépendant de la langue
 \RequirePackage{fontspec,xunicode,polyglossia}
@@ -32,7 +33,11 @@
 
 % Typo générale
 
-\setmainfont[Ligatures=TeX]{Linux Libertine O}
+\ifphilologue@word
+	\setmainfont[Mapping=tex-text,Ligatures=Common]{Times New Roman}
+	\else
+	\setmainfont[Ligatures=TeX]{Linux Libertine O}
+\fi
 \onehalfspacing
 
 % Réglage pour les listes, avec le package enumitem
