@@ -66,7 +66,7 @@
 
 % Pour les références bibliques 
 
-\newcommand{\bibleref}[1]{
+\newrobustcmd{\bibleref}[1]{
 	%Commande pour afficher un passage biblique, c'est elle qui est appellée par tt les autres
 	\def\passage##1|##2|##3|{\bibleverse{##1}(##2)\ifstrempty{##3}{}{ (##3)}}% L'affichage de chaque passage : 1) livre 2) passage 3) version
 	% On commence par faire une liste des passages
@@ -88,15 +88,15 @@
 	%
 }
 
-\newcommand*{\biblefr}[1]{\emph{#1}} % pour un fragment de bible seulement
-\newcommand*{\bible}[2]{%
+\newrobustcmd*{\biblefr}[1]{\emph{#1}} % pour un fragment de bible seulement
+\newrobustcmd*{\bible}[2]{%
 	\ifnumbering\let\footnote\footnoteA\fi%
 	\ifnumberingR\let\footnote\footnoteA\fi%
 	%#1 : passage
 	%#2 : texte
 	\emph{#2}\footnote{\bibleref{#1}}%
 }
-\newcommand*{\bibleall}[1]{%
+\newrobustcmd*{\bibleall}[1]{%
 	%#1 : passage
 	\ifnumbering\let\footnote\footnoteA\fi%
 	\ifnumberingR\let\footnote\footnoteA\fi%
@@ -156,9 +156,9 @@
 }
 % commander des formes dans le corps d'un texte
 
-\newcommand{\latinforme}[1]{\enquote{\textlatin{#1}}}
-\newcommand{\greekforme}[1]{\enquote{\textgreek{#1}}}
-\newcommand{\forme}[1]{\enquote{#1}}
+\newrobustcmd{\latinforme}[1]{\enquote{\textlatin{#1}}}
+\newrobustcmd{\greekforme}[1]{\enquote{\textgreek{#1}}}
+\newrobustcmd{\forme}[1]{\enquote{#1}}
 \let\formegreek\greekforme
 \let\formelatin\latinforme
 % Diverse commandes
@@ -166,11 +166,11 @@
 \newcommandx{\sic}[1][1,usedefault]{%
 	\ifstrempty{#1}{ (\emph{sic})}{#1\sic}%
 }
-\newcommand{\renvoi}[1]{(\ref{#1} p.~\pageref{#1})}
-\newcommand{\renvoicf}[1]{(\cf\ref{#1} p.~\pageref{#1})}
+\newrobustcmd{\renvoi}[1]{(\ref{#1} p.~\pageref{#1})}
+\newrobustcmd{\renvoicf}[1]{(\cf\ref{#1} p.~\pageref{#1})}
 % Manuscrit
 
-\newcommand{\ms}[1]{\emph{#1}}
+\newrobustcmd{\ms}[1]{\emph{#1}}
 % Stemma
 
 \RequirePackage{float}
