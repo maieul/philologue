@@ -282,4 +282,17 @@
 % geometry
 \RequirePackage[a4paper]{geometry}
 
+% Pour les tableaux automatiquement numérotée
+\newcounter{numligne}
+\newcommand{\pasnumligne}{\booltrue{pasnumligne}}
+\newbool{pasnumligne}
+\newcolumntype{N}{%
+	>{}{l}%
+	<{\notbool{pasnumligne}%
+		{\stepcounter{numligne}\thenumligne}%
+		{\boolfalse{pasnumligne}}}%
+}
+
+\pretocmd{\longtable}{\setcounter{numligne}{0}}{}{}
+
 
