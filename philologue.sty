@@ -186,6 +186,14 @@
 }
 \newcommand{\refstemma}[1]{stemma~\ref{stemma:#1}\xspace}
 % tableau
+\newcommand{\inserttableau}[2]{
+	\begin{table}[h]
+	\caption{#2}\label{tableau:#1}
+	\input{tableaux/#1}
+	\end{table}
+}
+\newcommand{\reftableau}[1]{tableau~\ref{tableau:#1}\xspace}
+
 \setlength{\doublerulesep}{0pt}
 \newcommand{\titrecolonne}[1]{\hfill \emph{#1} \hfill~}
 
