@@ -19,6 +19,7 @@
 % Outils divers à charger, indépendant de la langue
 \XeTeXinputnormalization 1
 \RequirePackage{etoolbox}
+\RequirePackage{suffix}
 \RequirePackage{xstring}
 \RequirePackage{hyperref}
 \RequirePackage{xargs}
@@ -191,10 +192,10 @@
 	\@inserttableau{#1}{#2}%
 	\end{table}%
 }
-\WithSuffix\newcommand{\inserttableau*}[2]{%
-	\begin{sidewaytable}[h]%
+\WithSuffix\newcommand\inserttableau*[2]{%
+	\begin{sidewaystable}[h]%
 	\@inserttableau{#1}{#2}%
-	\end{sidewaytable}%
+	\end{sidewaystable}%
 }
 \newcommand{\@inserttableau}[2]{%
 	\caption{#2}\label{tableau:#1}%
