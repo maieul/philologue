@@ -141,7 +141,11 @@
 \newcommandx{\indexnpe}[3][1,2,usedefault]{\indexn[#1][#2]{#3}{npe}}
 %%% commande générale pour indexer noms propre
 \newcommandx{\indexn}[4][1,2,usedefault]{%
-    \ifphilologue@noindex\else%
+  % #1 -> précision pour nom ambigu
+  % #2 -> renvoi 
+  % #3->terme principal 
+  % #4 -> index  
+  \ifphilologue@noindex\else%
 	\ifvoirindex%
 		\ifnumbering%% si dans section numeroté
 			\ledsidenote{#4:#1,#2,#3}%
