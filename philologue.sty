@@ -162,8 +162,8 @@
 }
 % commander des formes dans le corps d'un texte
 
-\newrobustcmd{\latinforme}[1]{\forme{\textlatin{#1}}}
-\newrobustcmd{\greekforme}[1]{\forme{\textgreek{#1}}}
+\newcommandx{\latinforme}[2][2,usedefault]{\forme{\textlatin{#1}#2}}
+\newcommandx{\greekforme}[2][2,usedefault]{\forme{\textgreek{#1}#2}}
 \newrobustcmd{\forme}[1]{\enquote{#1}}
 \let\formegreek\greekforme
 \let\formelatin\latinforme
