@@ -16,6 +16,7 @@
 	\RequirePackage{bibleref-french}
 	\biblerefstyle{defaultshorter}
 \fi
+\RequirePackage{cesures-philologie}
 % Outils divers à charger, indépendant de la langue
 \XeTeXinputnormalization 1
 \RequirePackage{etoolbox}
@@ -24,13 +25,13 @@
 \RequirePackage{hyperref}
 \RequirePackage{xargs}
 \RequirePackage{xspace}
-\RequirePackage{imakeidx}
+\ifphilologue@noindex\else\RequirePackage{imakeidx}\fi
 \RequirePackage{siunitx}
 \RequirePackage{longtable,array}
 \RequirePackage{rotating}
 \RequirePackage{arydshln}
 \RequirePackage{setspace}
-
+\RequirePackage{microtype}
 
 % Typo générale
 
@@ -52,7 +53,7 @@
 
 
 % Commande pour afficher les siècles
-\DeclareRobustCommand{\cRM}[1]{\MakeUppercase{\expandafter\romannumeral #1}}	% Capital
+\DeclareRobustCommand{\cRM}[1]{\MakeUppercase{\romannumeral #1}}	% Capital
 \DeclareRobustCommand{\cRm}[1]{\textsc{\romannumeral #1}}	% Petit majuscule
 \DeclareRobustCommand{\crm}[1]{\romannumeral #1}
 \DeclareRobustCommand{\siecle}[1]{\cRm{#1}\textsuperscript{e}~siècle}
@@ -140,7 +141,11 @@
 \newcommandx{\indexnpe}[3][1,2,usedefault]{\indexn[#1][#2]{#3}{npe}}
 %%% commande générale pour indexer noms propre
 \newcommandx{\indexn}[4][1,2,usedefault]{%
-    \ifphilologue@noindex\else%
+  % #1 -> précision pour nom ambigu
+  % #2 -> renvoi 
+  % #3->terme principal 
+  % #4 -> index  
+  \ifphilologue@noindex\else%
 	\ifvoirindex%
 		\ifnumbering%% si dans section numeroté
 			\ledsidenote{#4:#1,#2,#3}%
