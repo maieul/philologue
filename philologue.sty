@@ -168,12 +168,12 @@
 \let\formegreek\greekforme
 \let\formelatin\latinforme
 % Diverse commandes
-\newcommand{\cf}{cf.}
+\newcommand{\cf}{cf.~}
 \newcommand{\sic}[1]{%
 	\ifstrempty{#1}{ (\emph{sic})}{#1\sic{}}%
 }
 \newrobustcmd{\renvoi}[1]{(\renvoinopar{#1})}
-\newrobustcmd{\renvoicf}[1]{(\cf\renvoinopar{#1})}
+\newrobustcmd{\renvoicf}[1]{(\cf~\renvoinopar{#1})}
 \newrobustcmd{\renvoinopar}[1]{\ref{#1} p.~\pageref{#1}}
 % Manuscrit
 
