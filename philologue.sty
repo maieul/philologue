@@ -193,19 +193,26 @@
 }
 \newcommand{\refstemma}[1]{stemma~\ref{stemma:#1}\xspace}
 % tableau
-\newcommand{\inserttableau}[2]{%
-	\begin{table}[h]%
-	\@inserttableau{#1}{#2}%
-	\end{table}%
+\RequirePackage{caption}
+\newcommandx{\inserttableau}[3][3,usedefault]{%
+	\ifstrequal{#3}{nofloat}%
+		{\begingroup}%
+		{\begin{table}[h]}%
+			\@inserttableau{#1}{#2}[#3]%
+	\ifstrequal{#3}{nofloat}%
+		{\endgroup}
+		{\end{table}}%
 }
 \WithSuffix\newcommand\inserttableau*[2]{%
 	\begin{sidewaystable}[h]%
 	\@inserttableau{#1}{#2}%
 	\end{sidewaystable}%
 }
-\newcommand{\@inserttableau}[2]{%
-	\caption{#2}\label{tableau:#1}%
+\newcommandx{\@inserttableau}[3][3,usedefault]{%
 	\input{contenu/tableaux/#1}%
+	\ifstrequal{#3}{nofloat}%
+		{\centering\captionof{table}{#2}}%
+		{\centering\caption{#2}}\label{tableau:#1}%
 }
 \newcommand{\reftableau}[1]{tableau~\ref{tableau:#1}\xspace}
 
