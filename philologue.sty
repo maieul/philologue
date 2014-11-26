@@ -168,7 +168,11 @@
 \let\formegreek\greekforme
 \let\formelatin\latinforme
 % Diverse commandes
-\newcommand{\cf}{cf.~}
+\makeatletter
+\newcommand\cf{%
+	cf\@ifnextchar~{}{~}%
+}
+\makeatother
 \newcommand{\sic}[1]{%
 	\ifstrempty{#1}{ (\emph{sic})}{#1\sic{}}%
 }
