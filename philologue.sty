@@ -199,6 +199,19 @@
 	\end{stemma}
 }
 \newcommand{\refstemma}[1]{stemma~\ref{stemma:#1}\xspace}
+
+% carte
+
+\newfloat{carte}{h}{carte}
+\floatname{carte}{Carte}
+\newcommand{\insertcarte}[3]{
+	\begin{carte}
+		\centering
+		\input{img/cartes/#1}
+		\caption{#2}\label{carte:#3}
+	\end{carte}
+}
+\newcommand{\refcarte}[1]{carte~\ref{carte:#1}\xspace}
 % tableau
 \setcounter{LTchunksize}{100}
 \RequirePackage{caption}
