@@ -61,7 +61,7 @@
 \DeclareRobustCommand{\crm}[1]{\romannumeral #1}
 \DeclareRobustCommand{\siecle}[1]{\cRm{#1}\textsuperscript{e}~siècle}
 \DeclareRobustCommand{\siecles}[2]{\cRm{#1}-\cRm{#2}\textsuperscript{e}~siècles}
-% Bibleref
+
 
 
 
@@ -71,6 +71,7 @@
 
 % Pour les références bibliques 
 
+\renewcommand*{\BRvrsep}{-\nobreak}%
 \newrobustcmd{\bibleref}[1]{%
 	%Commande pour afficher un passage biblique, c'est elle qui est appellée par tt les autres
 	\def\passage##1|##2|##3|{\bibleverse{##1}(##2)\ifstrempty{##3}{}{ (##3)}}% L'affichage de chaque passage : 1) livre 2) passage 3) version
