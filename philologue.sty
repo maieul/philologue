@@ -105,7 +105,7 @@
 	%#1 : passage
 	\ifnumbering\let\footnote\footnoteA\fi%
 	\ifnumberingR\let\footnote\footnoteA\fi%
-	\footnote{\emph{Cf}. \bibleref{#1}}%
+	\footnote{\cf~\bibleref{#1}}%
 	}
 
 % pour les notes de traductions
@@ -174,7 +174,7 @@
 \let\formelatin\latinforme
 % Diverse commandes
 \newrobustcmd{\cf}{%
-	cf\@ifnextchar~{}{~}%
+	cf.\@ifnextchar~{}{~}%
 }
 \newcommand{\sic}[1]{%
 	\ifstrempty{#1}{ (\emph{sic})}{#1\sic{}}%
