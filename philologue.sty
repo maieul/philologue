@@ -93,7 +93,7 @@
 			    {\passage##1||}% Si 2 élèments, donc 1 |
 			    {\passage##1|||}% Si 1 élèments, donc 0 |
 			}%
-		\ifnumequal{\nbpassages}{\cptpassage}{.}{ ; }% y a t'il encore des passages ensuite?
+		\ifnumequal{\nbpassages}{\cptpassage}{}{ ; }% y a t'il encore des passages ensuite?
 	}%
 	\dolistloop{\passages}% Boucler sur tt les passages
 	%
@@ -105,13 +105,13 @@
 	\ifnumberingR\let\footnote\footnoteA\fi%
 	%#1 : passage
 	%#2 : texte
-	\emph{#2}\footnote{\bibleref{#1}}%
+	\emph{#2}\footnote{\bibleref{#1}.}%
 }
 \newrobustcmd*{\bibleall}[1]{%
 	%#1 : passage
 	\ifnumbering\let\footnote\footnoteA\fi%
 	\ifnumberingR\let\footnote\footnoteA\fi%
-	\footnote{\cf~\bibleref{#1}}%
+	\footnote{\cf~\bibleref{#1}.}%
 	}
 
 % pour les notes de traductions
