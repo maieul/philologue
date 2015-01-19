@@ -71,7 +71,11 @@
 \renewcommand*{\BRvrsep}{-\nobreak}%
 \newrobustcmd{\bibleref}[1]{%
 	%Commande pour afficher un passage biblique, c'est elle qui est appellée par tt les autres
-	\def\passage##1|##2|##3|{\bibleverse{##1}(##2)\ifstrempty{##3}{}{ (##3)}}% L'affichage de chaque passage : 1) livre 2) passage 3) version
+	\def\passage##1|##2|##3|{%
+	  \ifstrempty{##2}%Si on désigne le livre en entier
+	    {\bibleverse{##1}}%
+	    {\bibleverse{##1}(##2)\ifstrempty{##3}{}{ (##3)}}%
+	  }% L'affichage de chaque passage : 1) livre 2) passage 3) version
 	% On commence par faire une liste des passages
 	\def\passages{}% Liste des passages
 	\numdef\nbpassages{0}% Nbr total de passages
@@ -84,7 +88,11 @@
 		\numdef\cptpassage{\cptpassage+1}% Incrémenter le compteur du passage courant
 		\IfSubStr[2]{##1}{|}% Tester si on a 2 ou 3 élèments dans le passage
 			{\passage##1|} % Si 3 élèments, donc 2 |
-			{\passage##1||}% Si 2 élèments, donc 1 |
+			{%
+			  \IfSubStr[1]{##1}{|}%
+			    {\passage##1||}% Si 2 élèments, donc 1 |
+			    {\passage##1|||}% Si 1 élèments, donc 0 |
+			}%
 		\ifnumequal{\nbpassages}{\cptpassage}{.}{ ; }% y a t'il encore des passages ensuite?
 	}%
 	\dolistloop{\passages}% Boucler sur tt les passages
