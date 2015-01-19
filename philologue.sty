@@ -100,6 +100,7 @@
 }
 
 \newrobustcmd*{\biblefr}[1]{\emph{#1}} % pour un fragment de bible seulement
+\newrobustcmd*{\biblecite}{\footnote{\bibleref{#1}.}}%Pour une référence biblique en note sans cf 
 \newrobustcmd*{\bible}[2]{%
 	\ifnumbering\let\footnote\footnoteA\fi%
 	\ifnumberingR\let\footnote\footnoteA\fi%
