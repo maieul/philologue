@@ -113,8 +113,9 @@
 	\ifnumbering\let\footnote\footnoteA\fi%
 	\ifnumberingR\let\footnote\footnoteA\fi%
 	\footnote{\cf~\bibleref{#1}.}%
-	}
+      }
 
+\newcommand{\verset}[1]{\textsuperscript{#1}}
 % pour les notes de traductions
 \newcommand{\ctrad}[2]{\edtext{#1}{\Bfootnote{#2}}}
 \newcommand{\lit}[1]{\emph{lit.} : #1}
