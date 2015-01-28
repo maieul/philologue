@@ -69,18 +69,19 @@
 % Pour les références bibliques 
 
 \renewcommand*{\BRvrsep}{-\nobreak}%
+
+\DeclareListParser*{\trouvepassages}{+}% Le + est un séparateur
 \newrobustcmd{\bibleref}[1]{%
-	%Commande pour afficher un passage biblique, c'est elle qui est appellée par tt les autres
-	\def\passage##1|##2|##3|{%
-	  \ifstrempty{##2}%Si on désigne le livre en entier
-	    {\bibleverse{##1}}%
-	    {\bibleverse{##1}(##2)\ifstrempty{##3}{}{ (##3)}}%
-	  }% L'affichage de chaque passage : 1) livre 2) passage 3) version
-	% On commence par faire une liste des passages
-	\def\passages{}% Liste des passages
-	\numdef\nbpassages{0}% Nbr total de passages
-	\DeclareListParser*{\trouvepassages}{+}% Le + est un séparateur
-	\trouvepassages{\numdef\nbpassages{\nbpassages+1}\listadd\passages}{#1}% On remplit la liste des passage
+      %Commande pour afficher un passage biblique, c'est elle qui est appellée par tt les autres
+      \def\passage##1|##2|##3|{%
+	\ifstrempty{##2}%Si on désigne le livre en entier
+	  {\bibleverse{##1}}%
+	  {\bibleverse{##1}(##2)\ifstrempty{##3}{}{ (##3)}}%
+	}% L'affichage de chaque passage : 1) livre 2) passage 3) version
+      % On commence par faire une liste des passages
+      \def\passages{}% Liste des passages
+      \numdef\nbpassages{0}% Nbr total de passages
+      \trouvepassages{\numdef\nbpassages{\nbpassages+1}\listadd\passages}{#1}% On remplit la liste des passage
 	%
 	% On la parcourt ensuite
 	\numdef\cptpassage{0}% Le nombre de passage courant
