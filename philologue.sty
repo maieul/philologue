@@ -113,7 +113,7 @@
 	%#1 : passage
 	\ifnumbering\let\footnote\footnoteA\fi%
 	\ifnumberingR\let\footnote\footnoteA\fi%
-	\footnote{\cf~\bibleref{#1}.}%
+	\footnote{\Cf~\bibleref{#1}.}%
       }
 
 \newcommand{\verset}[1]{\leavevmode\textsuperscript{#1}\ignorespaces}
@@ -183,6 +183,9 @@
 \let\formelatin\latinforme
 % Diverse commandes
 \newrobustcmd{\cf}{%
+	cf.\@ifnextchar~{}{~}%
+}
+\newrobustcmd{\Cf}{%
 	cf.\@ifnextchar~{}{~}%
 }
 \newcommand{\sic}[1]{%
