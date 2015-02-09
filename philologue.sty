@@ -214,7 +214,7 @@
 
 % carte
 
-\newfloat{carte}{h}{carte}
+\newfloat{carte}{H}{carte}
 \floatname{carte}{Carte}
 \newcommand{\insertcarte}[3]{
 	\begin{carte}
@@ -223,7 +223,7 @@
 		\caption{#2}\label{carte:#3}
 	\end{carte}
 }
-\newcommand{\refcarte}[1]{carte~\ref{carte:#1}\xspace}
+\newcommand{\refcarte}[1]{carte~\ref{carte:#1} p.~\pageref{carte:#1}\xspace}
 % tableau
 \setcounter{LTchunksize}{100}
 \RequirePackage{caption}
