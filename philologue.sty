@@ -76,7 +76,10 @@
       \def\passage##1|##2|##3|{%
 	\ifstrempty{##2}%Si on désigne le livre en entier
 	  {\bibleverse{##1}}%
-	  {\bibleverse{##1}(##2)\ifstrempty{##3}{}{ (##3)}}%
+	  {\IfSubStr{##2}{(}%
+	    {\bibleverse{##1}##2\ifstrempty{##3}{}{ (##3)}}%
+	    {\bibleverse{##1}(##2)\ifstrempty{##3}{}{ (##3)}}%
+	  }%
 	}% L'affichage de chaque passage : 1) livre 2) passage 3) version
       % On commence par faire une liste des passages
       \def\passages{}% Liste des passages
