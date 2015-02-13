@@ -32,6 +32,7 @@
 \RequirePackage{arydshln}
 \RequirePackage{setspace}
 \RequirePackage{microtype}
+\RequirePackage{color,soul}
 
 % Typo générale
 
@@ -42,6 +43,8 @@
 	\setmainfont[Ligatures=TeX]{Linux Libertine O}
 \fi
 \onehalfspacing
+% Les choses à reprendre
+\newcommand{\areprendre}[1]{\PackageWarning{A reprendre}{#1}\hl{#1}}
 
 % Réglage pour les listes, avec le package enumitem
 \usepackage{enumitem}
