@@ -58,9 +58,20 @@
 % Commande pour afficher les siècles
 \DeclareRobustCommand{\cRM}[1]{\MakeUppercase{\romannumeral #1}}	% Capital
 \DeclareRobustCommand{\cRm}[1]{\textsc{\romannumeral #1}}	% Petit majuscule
-\DeclareRobustCommand{\crm}[1]{\romannumeral #1}
-\DeclareRobustCommand{\siecle}[1]{\cRm{#1}\textsuperscript{e}~siècle}
-\DeclareRobustCommand{\siecles}[2]{\cRm{#1}-\cRm{#2}\textsuperscript{e}~siècles}
+\DeclareRobustCommand{\crm}[1]{\romannumeral #1}%
+\DeclareRobustCommand{\siecle}[1]{%
+  \ifnum #1>0%
+    \cRm{#1}\textsuperscript{e}~siècle%
+  \else%
+    \numdef{\@tmp}{-#1}%
+    \cRm{\@tmp}\textsuperscript{e}~siècle avant notre ère%
+  \fi%
+  \xspace%
+}%
+\DeclareRobustCommand{\siecles}[2]{%
+  \cRm{#1}-\cRm{#2}\textsuperscript{e}%
+  ~siècles\xspace%
+}%
 
 
 
